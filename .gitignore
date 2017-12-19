@@ -1,0 +1,30 @@
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+
+### JetBrains template
+.idea
+
+
+### VisualStudioCode template
+.vscode/
+#!.vscode/settings.json
+#!.vscode/tasks.json
+#!.vscode/launch.json
+#!.vscode/extensions.json
+
+
+### macOS template
+# General
+.DS_Store
+# Thumbnails
+._*
