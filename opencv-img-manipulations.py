@@ -3,7 +3,6 @@ import cv2
 # Reading an image file
 img = cv2.imread('images/jurassic-park-tour-jeep.jpg')
 
-
 print(f'Image shape: {img.shape}')
 
 # displaying image
