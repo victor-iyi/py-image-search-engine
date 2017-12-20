@@ -13,6 +13,12 @@ import cv2
 img_file = 'images/jurassic-park-tour-jeep.jpg'
 img_original = cv2.imread(img_file)
 
+# image shape
+img_original_shape = img_original.shape
+print(f'Original image shape = {img_original_shape}')
+
+# Resize dimensions
+
 
 # Display images
 cv2.imshow('Original', img_original)
