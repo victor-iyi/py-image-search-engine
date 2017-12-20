@@ -14,13 +14,14 @@ img_file = 'images/jurassic-park-tour-jeep.jpg'
 img_original = cv2.imread(img_file)
 
 # image shape
-img_original_shape = img_original.shape
+img_original_shape = img_original.shape   # (height, width, channel)
 print(f'Original image shape = {img_original_shape}')
 
 # Resize dimensions [aspect ratio]
 # ratio of the new image to the old one
-r = 100 / img_original_shape[1]  # new_height / old_width
-dim = (100, int(img_original_shape[0] * r))  # [new_height, (old_height * ratio)]
+new_height = 200
+r = new_height / img_original_shape[1]  # new_height / old_width
+dim = (new_height, int(img_original_shape[0] * r))  # [new_height, (old_height * ratio)]
 
 img_resized = cv2.resize(img_original, dim, interpolation=cv2.INTER_AREA)
 
