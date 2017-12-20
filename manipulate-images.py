@@ -24,7 +24,8 @@ r = new_height / img_original_shape[1]  # new_height / old_width
 dim = (new_height, int(img_original_shape[0] * r))  # [new_height, (old_height * ratio)]
 
 img_resized = cv2.resize(img_original, dim, interpolation=cv2.INTER_AREA)
-
+img_resized_shape = img_resized.shape
+print(f'Resized image shape = {img_resized_shape}')
 # Display images
 cv2.imshow('Original', img_original)
 cv2.imshow('Resized', img_resized)
