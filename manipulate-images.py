@@ -14,7 +14,7 @@ img_file = 'images/jurassic-park-tour-jeep.jpg'
 img_original = cv2.imread(img_file)
 
 # image shape
-img_original_shape = img_original.shape   # (height, width, channel)
+img_original_shape = img_original.shape  # (height, width, channel)
 print(f'Original image shape = {img_original_shape}')
 
 ################################################################################################
@@ -45,7 +45,7 @@ print(f'Resized image shape = {img_resized_shape}')
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 (h, w) = img_original_shape[:2]
-center = (h/2, w/2)
+center = (h / 2, w / 2)
 
 rotation_matrix = cv2.getRotationMatrix2D(center, 180, 1.0)
 img_rotated = cv2.warpAffine(img_original, rotation_matrix, (w, h))
