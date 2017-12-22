@@ -43,7 +43,7 @@ print(f'Resized image shape = {img_resized_shape}')
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 (h, w) = img_original_shape[:2]
-center = (h / 2, w / 2)
+center = (w / 2, h / 2)
 
 rotation_matrix = cv2.getRotationMatrix2D(center, 180, 1.0)
 img_rotated = cv2.warpAffine(img_original, rotation_matrix, (w, h))
