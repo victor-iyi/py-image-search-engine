@@ -10,7 +10,7 @@
 import cv2
 
 # Load images
-img_file = 'images/jurassic-park/jurassic-park-tour-jeep.jpg'
+img_file = '../images/jurassic-park/jurassic-park-tour-jeep.jpg'
 img_original = cv2.imread(img_file)
 
 # image shape
