@@ -10,7 +10,7 @@
 import cv2
 
 # Load images
-img_file = 'images/jurassic-park-tour-jeep.jpg'
+img_file = 'images/jurassic-park/jurassic-park-tour-jeep.jpg'
 img_original = cv2.imread(img_file)
 
 # image shape
@@ -19,7 +19,7 @@ print(f'Original image shape = {img_original_shape}')
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Resizing images
+# | RESIZING IMAGES
 # |     We have to keep the aspect ratio of the image in mind, which is the
 # |     proportional relationship of the width and the height of the image.
 # |     In this case, we are resizing the image to have a 200 pixel width,
@@ -39,7 +39,7 @@ print(f'Resized image shape = {img_resized_shape}')
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Rotating images
+# | ROTATING IMAGES
 # |     Compute a matrix that can be used for rotating (and scaling)
 # |     the image. The first argument is the center of the image that
 # |     we computed. If you wanted to rotate the image around any
@@ -60,7 +60,7 @@ img_rotated = cv2.warpAffine(img_original, rotation_matrix, (w, h))
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Cropping images
+# | CROPPING IMAGES
 # |     Crop the image with slicing. It's a numpy array after all!
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
@@ -69,7 +69,7 @@ img_cropped = img_original[70:170, 440:540]
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Display images
+# | DISPLAY IMAGES
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 cv2.imshow('Original', img_original)
