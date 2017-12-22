@@ -20,17 +20,15 @@ print(f'Original image shape = {img_original_shape}')
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 # | Resizing images
+# |     We have to keep the aspect ratio of the image in mind, which is the
+# |     proportional relationship of the width and the height of the image.
+# |     In this case, we are resizing the image to have a 200 pixel width,
+# |     therefore, we need to calculate r, the ratio of the new width to
+# |     the old width. Then, we construct the new dimensions of the img
+# |     by using 100 pixels for the width, & r x the old image height.
+# |     Doing this allows us to maintain the aspect ratio of the image.
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
-"""
-We have to keep the aspect ratio of the image in mind, which is the 
-proportional relationship of the width and the height of the image. 
-In this case, we are resizing the image to have a 200 pixel width, 
-therefore, we need to calculate r, the ratio of the new width to 
-the old width. Then, we construct the new dimensions of the image 
-by using 100 pixels for the width, and r x the old image height. 
-Doing this allows us to maintain the aspect ratio of the image.
-"""
 new_height = 200
 r = new_height / img_original_shape[1]  # new_height / old_width = aspect_ratio[width]
 dim = (new_height, int(img_original_shape[0] * r))  # [new_height, (old_height * ratio)]
