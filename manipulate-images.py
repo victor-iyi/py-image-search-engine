@@ -40,6 +40,16 @@ print(f'Resized image shape = {img_resized_shape}')
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 # | Rotating images
+# |     Compute a matrix that can be used for rotating (and scaling)
+# |     the image. The first argument is the center of the image that
+# |     we computed. If you wanted to rotate the image around any
+# |     arbitrary point, this is where you would supply that point.
+# |     The second argument is our rotation angle (in degrees). And
+# |     the third argument is our scaling factor — in this case, 1.0,
+# |     because we want to maintain the original scale of the image.
+# |     If we wanted to halve the size of the image, we would use 0.5.
+# |     Similarly, if we wanted to double the size of the image, we
+# |     would use 2.0.
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 (h, w) = img_original_shape[:2]
