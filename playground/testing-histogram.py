@@ -7,6 +7,7 @@
   
   Copyright © 2017. Victor. All rights reserved.
 """
+import os
 import argparse
 
 import cv2
@@ -18,13 +19,18 @@ import matplotlib.pyplot as plt
 # | Command line arguments
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
-parser = argparse.ArgumentParser()
+# Default images
+image_folder = '../images/jurassic-park/'
+default_images = [img for img in os.listdir(image_folder) if img[0] is not '.']
+
 # Arguments
+parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--image',
-                    default='../images/jurassic-park/jurassic-park-tour-jeep.jpg',
+                    default=default_images[0],
                     help='Image to find it\'s color histogram')
 args = parser.parse_args()
-
+# Add on the images folder
+args.image = os.path.join(image_folder, args.image)
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 # | Calculating the Histogram
@@ -61,7 +67,7 @@ print('Flatten features shape = {}'.format(np.ravel(features).shape))
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 # Plot histogram
-plt.plot(hist, color='k', label='Image histogram', linewidth=1.5)
+# plt.plot(hist, color='k', label='Image histogram', linewidth=1.5)
 plt.title('Color Histogram')
 plt.xlabel('# of Bins')
 plt.ylabel('Pixel values')
