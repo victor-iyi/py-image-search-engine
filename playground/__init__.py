@@ -19,6 +19,11 @@ parser.add_argument('-i', '--image',
 args = parser.parse_args()
 
 image = cv2.imread(args.image)
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+multi_hist = cv2.calcHist(images=[image, gray], channels=[0, 1], mask=None,
+                          histSize=[64, 64], ranges=[0, 256, 0, 256])
+plt.plot(multi_hist)
+
 channels, colors, features = cv2.split(image), ('b', 'g', 'r'), []
 
 # Histogram for each color channels
