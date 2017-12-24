@@ -37,9 +37,9 @@ args = parser.parse_args()
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 image = cv2.imread(args.image)
-# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 hist = cv2.calcHist(images=[image], channels=[0], mask=None, histSize=[256], ranges=[0, 256])
-
+# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# gray_hist = cv2.calcHist(images=[gray], channels=[0], mask=None, histSize=[256], ranges=[0, 256])
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
