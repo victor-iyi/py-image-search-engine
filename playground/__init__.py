@@ -20,9 +20,12 @@ args = parser.parse_args()
 
 image = cv2.imread(args.image)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-multi_hist = cv2.calcHist(images=[image, gray], channels=[0, 1], mask=None,
-                          histSize=[64, 64], ranges=[0, 256, 0, 256])
-plt.plot(multi_hist)
+hist_2D = cv2.calcHist(images=[image, gray], channels=[0, 1], mask=None,
+                       histSize=[64, 64], ranges=[0, 256, 0, 256])
+hist_3D = cv2.calcHist(images=[image], channels=[0, 1, 2], mask=None,
+                       histSize=[32, 32, 32], ranges=[0, 256]*3)
+plt.plot(hist_2D)
+print('3D histogram shape: {} with {:,} feature values'.format(hist_3D.shape, hist_3D.ravel().shape[0]))
 
 channels, colors, features = cv2.split(image), ('b', 'g', 'r'), []
 
@@ -41,6 +44,6 @@ plt.xlabel('Histogram range')
 plt.ylabel('No of pixels')
 plt.show()
 
-cv2.imshow('Original', image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.imshow('Original', image)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
