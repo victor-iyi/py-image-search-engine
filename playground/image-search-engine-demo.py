@@ -8,6 +8,14 @@
   Copyright © 2017. Victor. All rights reserved.
 """
 import cv2
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', '--dataset', default='../images/lord-of-the-rings/',
+                    help='Path to dataset.')
+parser.add_argument('i', '--index', default='../saved/index.pkl',
+                    help='Path to the index file.')
+args = parser.parse_args()
 
 
 class RGBHistogram:
