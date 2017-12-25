@@ -31,8 +31,8 @@ class RGBHistogram:
 
         :param image:
             Image to be described.
-        :return:
-            Flattened descriptor.
+        :return: flattened 3-D histogram
+            Flattened descriptor [feature vector].
         """
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         hist = cv2.calcHist(images=[image], channels=[0, 1, 2], mask=None,
