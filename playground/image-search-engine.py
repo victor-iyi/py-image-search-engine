@@ -76,18 +76,29 @@ class RGBHistogram:
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 # key - image file name, value - computed feature vector/descriptor
-index = {}
-descriptor = RGBHistogram(bins=[8, 8, 8])
+def indexing(dataset):
+    index_dict = {}
+    descriptor = RGBHistogram(bins=[8, 8, 8])
 
-for filename in glob.glob(os.path.join(args.dataset, '*.png')):
-    # e.g. places/eiffel_tower.jpg => eiffel_tower
-    img_name = os.path.basename(filename).split('.')[0]
+    for filename in glob.glob(os.path.join(dataset, '*.jpg|png$')):
+        # e.g. places/eiffel_tower.jpg => eiffel_tower
+        img_name = os.path.basename(filename).split('.')[0]
 
-    image = cv2.imread(filename)
-    feature = descriptor.describe(image)
-    # key - image name, value - feature vector
-    index[img_name] = feature
+        image = cv2.imread(filename)
+        feature = descriptor.describe(image)
+        # key - image name, value - feature vector
+        index_dict[img_name] = feature
+    return index_dict
+
 
 # Writing the index to disk
-with open(args.index, 'w') as f:
-    pickle.dump(index, f)
+def save(obj, path):
+    if not os.path.isfile(path):
+        os.makedirs(os.path.dirname(path))
+    with open(path, 'w') as f:
+        pickle.dump(obj, f)
+
+
+if __name__ == '__main__':
+    index = indexing(args.dataset)
+    save(index, args.index)
