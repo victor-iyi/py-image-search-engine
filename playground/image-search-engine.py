@@ -93,8 +93,8 @@ def save(obj, path):
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 class Searcher:
-    def __init__(self):
-        pass
+    def __init__(self, features):
+        self.features = features
 
 
 if __name__ == '__main__':
@@ -106,11 +106,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--dataset', default='../images/lord-of-the-rings/',
                         help='Path to dataset.')
-    parser.add_argument('-i', '--index', default='../saved/index.pkl',
-                        help='Path to the index file.')
+    parser.add_argument('-i', '--features', default='../saved/features.pkl',
+                        help='Path to the features file.')
     args = parser.parse_args()
 
     # Extracting features
-    index = feature_extraction(args.dataset)
+    features = feature_extraction(args.dataset)
     # Saving extracted features
-    save(index, args.index)
+    save(features, args.features)
