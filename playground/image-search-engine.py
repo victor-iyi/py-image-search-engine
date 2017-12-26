@@ -14,18 +14,6 @@ import pickle
 
 import cv2
 
-################################################################################################
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Command line argument
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-################################################################################################
-parser = argparse.ArgumentParser()
-parser.add_argument('-d', '--dataset', default='../images/lord-of-the-rings/',
-                    help='Path to dataset.')
-parser.add_argument('-i', '--index', default='../saved/index.pkl',
-                    help='Path to the index file.')
-args = parser.parse_args()
-
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
@@ -76,8 +64,8 @@ class RGBHistogram:
 # +———————————————————————————————————————————————————————————————————————————————————————————+
 ################################################################################################
 # key - image file name, value - computed feature vector/descriptor
-def indexing(dataset):
-    index_dict = {}
+def feature_extraction(dataset):
+    features = {}
     descriptor = RGBHistogram(bins=[8, 8, 8])
 
     for filename in glob.glob(os.path.join(dataset, '*.jpg|png$')):
@@ -87,8 +75,8 @@ def indexing(dataset):
         image = cv2.imread(filename)
         feature = descriptor.describe(image)
         # key - image name, value - feature vector
-        index_dict[img_name] = feature
-    return index_dict
+        features[img_name] = feature
+    return features
 
 
 # Writing the index to disk
@@ -100,5 +88,19 @@ def save(obj, path):
 
 
 if __name__ == '__main__':
-    index = indexing(args.dataset)
+    ################################################################################################
+    # +———————————————————————————————————————————————————————————————————————————————————————————+
+    # | Command line argument
+    # +———————————————————————————————————————————————————————————————————————————————————————————+
+    ################################################################################################
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--dataset', default='../images/lord-of-the-rings/',
+                        help='Path to dataset.')
+    parser.add_argument('-i', '--index', default='../saved/index.pkl',
+                        help='Path to the index file.')
+    args = parser.parse_args()
+
+    # Extracting features
+    index = feature_extraction(args.dataset)
+    # Saving extracted features
     save(index, args.index)
