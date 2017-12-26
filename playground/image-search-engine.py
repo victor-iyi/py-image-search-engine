@@ -110,11 +110,10 @@ class Searcher:
     @staticmethod
     def chi_squared(a, b, eps=1e-10):
         # compute the chi-squared distance
-        d = 0.5 * np.sum([((a - b) ** 2) / (a + b + eps)
-                          for (a, b) in zip(a, b)])
-
+        dist = 0.5 * np.sum([pow(a - b, 2) / (a + b + eps)
+                             for (a, b) in zip(a, b)])
         # return the chi-squared distance
-        return d
+        return dist
 
 
 if __name__ == '__main__':
