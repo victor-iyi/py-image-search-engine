@@ -13,6 +13,7 @@ import os
 import pickle
 
 import cv2
+import numpy as np
 
 
 ################################################################################################
@@ -95,6 +96,25 @@ def save(obj, path):
 class Searcher:
     def __init__(self, features):
         self.features = features
+
+    def search(self, query):
+        results = {}
+
+        for name, feature in self.features.item():
+            dist = self.chi_squared(query, feature)
+            results[name] = dist
+
+        results = sorted([(d, n) for n, d in results.items()])
+        return results
+
+    @staticmethod
+    def chi_squared(a, b, eps=1e-10):
+        # compute the chi-squared distance
+        d = 0.5 * np.sum([((a - b) ** 2) / (a + b + eps)
+                          for (a, b) in zip(a, b)])
+
+        # return the chi-squared distance
+        return d
 
 
 if __name__ == '__main__':
