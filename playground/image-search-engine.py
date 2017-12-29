@@ -14,7 +14,7 @@ import pickle
 
 import cv2
 import numpy as np
-
+from scipy.spatial.distance import euclidean
 
 ################################################################################################
 # +———————————————————————————————————————————————————————————————————————————————————————————+
@@ -101,19 +101,19 @@ class Searcher:
         results = {}
 
         for name, feature in self.features.item():
-            dist = self.chi_squared(query, feature)
+            dist = euclidean(query, feature)
             results[name] = dist
 
         results = sorted([(d, n) for n, d in results.items()])
         return results
 
-    @staticmethod
-    def chi_squared(a, b, eps=1e-10):
-        # compute the chi-squared distance
-        dist = 0.5 * np.sum([pow(a - b, 2) / (a + b + eps)
-                             for (a, b) in zip(a, b)])
-        # return the chi-squared distance
-        return dist
+    # @staticmethod
+    # def chi_squared(a, b, eps=1e-10):
+    #     # compute the chi-squared distance
+    #     dist = 0.5 * np.sum([pow(a - b, 2) / (a + b + eps)
+    #                          for (a, b) in zip(a, b)])
+    #     # return the chi-squared distance
+    #     return dist
 
 
 if __name__ == '__main__':
