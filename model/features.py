@@ -13,7 +13,7 @@ import pickle
 
 import cv2
 
-from descriptor import Histogram
+from model.descriptor import Histogram
 
 
 def extract(dataset):
